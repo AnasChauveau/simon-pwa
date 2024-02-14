@@ -5,6 +5,47 @@
   text-align: center;
 }
 
+.container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: white;
+  width: 50vh;
+  height: 50vh;
+}
+
+.btnJeu{
+  width: 10rem;
+  height: 10rem;
+}
+
+#red{
+  background-color: red;
+}
+#blue{
+  background-color: blue;
+}
+#green{
+  background-color: green;
+}
+#yellow{
+  background-color: yellow;
+}
+
+#red:hover{
+  background-color: rgb(247, 76, 76);
+}
+#blue:hover{
+  background-color: rgb(73, 73, 252);
+}
+#green:hover{
+  background-color: rgb(36, 149, 36);
+}
+#yellow:hover{
+  background-color: rgb(252, 252, 78);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
