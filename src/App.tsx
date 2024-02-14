@@ -8,10 +8,13 @@ function App() {
 
   return (
     <div className='container'>
-      <div className='btnJeu' id='red'></div>
-      <div className='btnJeu' id='blue'></div>
-      <div className='btnJeu' id='green'></div>
-      <div className='btnJeu' id='yellow'></div>
+      <div className='container-game'>
+        <div className='btnJeu' id='red'></div>
+        <div className='btnJeu' id='blue'></div>
+        <div className='btnJeu' id='green'></div>
+        <div className='btnJeu' id='yellow'></div>
+      </div>
+      <button id='btnStart'>START</button>
     </div>
   )
 }

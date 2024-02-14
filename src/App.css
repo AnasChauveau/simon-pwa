@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-.container{
+.container-game{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -17,8 +17,12 @@
 }
 
 .btnJeu{
-  width: 10rem;
-  height: 10rem;
+  width: 24vh;
+  height: 24vh;
+}
+
+#btnStart{
+  margin-top: 2rem;
 }
 
 #red{
