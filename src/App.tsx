@@ -6,11 +6,13 @@ import './App.css'
 function App() {
   const [sequence, setSequence] = useState<number[]>([])
   const [start, setStart] = useState(false)
+  const [timePlayer, setTimePlayer] = useState(false)
   const [click, setClick] = useState(0)
 
   const gameOver = useMemo(() => click === -1, [click])
 
   useEffect(() => {
+    setTimePlayer(true)
     console.log(sequence)
   }, [sequence]);
 
@@ -19,6 +21,7 @@ function App() {
       setSequence([])
       setStart(false)
       setClick(0)
+      setTimePlayer(false)
     }
   }, [gameOver]);
 
@@ -31,19 +34,22 @@ function App() {
   }
 
   const handleClick = (key: number) => {
-    if(key == sequence[click]){
-      if(click === sequence.length - 1){
-        console.log('sequence complétér')
-        startSequence()
+    if(timePlayer === true){
+      if(key == sequence[click]){
+        if(click === sequence.length - 1){
+          console.log('sequence Ok')
+          setTimePlayer(false)
+          startSequence()
+        }
+        else {
+          console.log("ok on avance")
+          setClick(click+1)
+        }
       }
-      else {
-        console.log("ok on avance")
-        setClick(click+1)
+      else{
+        console.log('erreur dans la sequence')
+        setClick(-1)
       }
-    }
-    else{
-      console.log('erreur dans la sequence')
-      setClick(-1)
     }
   }
 
