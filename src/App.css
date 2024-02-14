@@ -55,6 +55,23 @@
   background-color: rgb(252, 252, 78);
 }
 
+#red:active{
+  border-top-left-radius: 100%;
+  background-color: rgb(154, 3, 3);
+}
+#blue:active{
+  border-top-right-radius: 100%;
+  background-color: rgb(1, 1, 125);
+}
+#green:active{
+  border-bottom-left-radius: 100%;
+  background-color: rgb(1, 80, 1);
+}
+#yellow:active{
+  border-bottom-right-radius: 100%;
+  background-color: rgb(163, 163, 3);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
