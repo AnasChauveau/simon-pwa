@@ -13,6 +13,7 @@
   background-color: white;
   width: 50vh;
   height: 50vh;
+  border-radius: 48%;
 }
 
 .btnJeu{
@@ -21,15 +22,19 @@
 }
 
 #red{
+  border-top-left-radius: 100%;
   background-color: red;
 }
 #blue{
+  border-top-right-radius: 100%;
   background-color: blue;
 }
 #green{
+  border-bottom-left-radius: 100%;
   background-color: green;
 }
 #yellow{
+  border-bottom-right-radius: 100%;
   background-color: yellow;
 }
 
