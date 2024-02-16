@@ -1,6 +1,9 @@
 import { useMemo, useState, useEffect } from 'react'
 import './App.css'
 
+const COLORS = ['red', 'blue', 'green', 'yellow']
+const LIGHT_COLORS = ['pink', 'lightblue', 'yellowgreen', 'black']
+
 function App() {
   const [sequence, setSequence] = useState<number[]>([])
   const [start, setStart] = useState(false)
@@ -9,10 +12,7 @@ function App() {
 
   const gameOver = useMemo(() => click === -1, [click])
 
-  useEffect(() => {
-    setTimePlayer(true)
-    console.log(sequence)
-  }, [sequence]);
+  console.log('state', {sequence, click, timePlayer, start})
 
   useEffect(() => {
     if (gameOver) {
@@ -23,9 +23,23 @@ function App() {
     }
   }, [gameOver]);
 
+  useEffect(() => {
+    if(start && !timePlayer){
+      if(click < sequence.length){
+        setTimeout(() => {
+          setClick(click + 1)
+        }, 1000)
+      }
+      else {
+        setClick(0)
+        setTimePlayer(true)
+      }
+    }
+  }, [sequence, timePlayer, click])
+
   const startSequence = () => {
     let newSequence = sequence.slice()
-    newSequence.push(Math.floor(Math.random() * 4) + 1);
+    newSequence.push(Math.floor(Math.random() * 4));
     setSequence(newSequence)
     setClick(0)
     setStart(true)
@@ -54,10 +68,15 @@ function App() {
   return (
     <div className='container'>
       <div className='container-game'>
-        <div className='btnJeu' id='red' onClick={() => handleClick(1)}></div>
-        <div className='btnJeu' id='blue' onClick={() => handleClick(2)}></div>
-        <div className='btnJeu' id='green' onClick={() => handleClick(3)}></div>
-        <div className='btnJeu' id='yellow' onClick={() => handleClick(4)}></div>
+        {COLORS.map((color, colorIndex) => (
+          <div
+            key={colorIndex}
+            style={{backgroundColor: (!timePlayer && colorIndex === sequence[click]) ? LIGHT_COLORS[colorIndex] : color}}
+            className='btnJeu'
+            id={color}
+            onClick={() => handleClick(colorIndex)}
+          />
+        ))}
       </div>
       {!start && <button id='btnStart' onClick={() => startSequence()}>START</button>}
     </div>
