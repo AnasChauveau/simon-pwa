@@ -9,6 +9,16 @@ function App() {
   const [start, setStart] = useState(false)
   const [timePlayer, setTimePlayer] = useState(false)
   const [click, setClick] = useState(0)
+  const [date, setDate] = useState('')
+
+  useEffect( () => {
+    async function getDate() {
+      const response = await fetch('http://localhost:3000/')
+      const laDate = await response.json()
+      setDate(laDate)
+    }
+    getDate()
+  }, [])
 
   const gameOver = useMemo(() => click === -1, [click])
 
@@ -67,6 +77,7 @@ function App() {
 
   return (
     <div className='container'>
+    <h1>{date}</h1>
       <div className='container-game'>
         {COLORS.map((color, colorIndex) => (
           <div
